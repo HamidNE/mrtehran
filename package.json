@@ -1,7 +1,15 @@
 {
   "name": "mrtehran",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "default": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
