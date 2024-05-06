@@ -2,12 +2,13 @@ import {fetchAlbumSongs, fetchArtistLatestSongs} from "../utils/api";
 import {kebabCase} from "../utils/string";
 import {mkdir} from "node:fs/promises";
 import {downloadFile} from "../utils/download";
+import {Track} from "../types/api";
 
-async function downloadSongs(res: { track_audio: string; track_title: string }[], id: string) {
-    const links = res.map(item => [
+async function downloadSongs(res: Track[], id: string) {
+    const links: [string, string][] = res.map(item => [
         `https://cdnmrtehran.ir/media/${item.track_audio}`,
         `../../download/${id}/${kebabCase(item.track_title)}.mp3`
-    ] as [string, string]);
+    ]);
 
     await mkdir(`../download/${id}`, {recursive: true});
 
