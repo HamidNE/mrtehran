@@ -1,12 +1,17 @@
 {
   "name": "mrtehran",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "main": "src/index.ts",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "private": true,
+  "devDependencies": {
+    "@types/node": "^20.12.8",
+    "eslint": "^9.2.0",
+    "typescript": "^5.4.5"
+  },
   "dependencies": {
     "got": "^14.2.1"
   }
