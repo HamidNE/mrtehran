@@ -6,7 +6,6 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "private": true,
   "devDependencies": {
     "@types/node": "^20.12.8",
     "eslint": "^9.2.0",
