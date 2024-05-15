@@ -1,8 +1,10 @@
 {
   "name": "mrtehran",
   "version": "1.0.1",
-  "type": "module",
+  "description": "Nodejs MrTehran downloader",
   "license": "MIT",
+  "author": "HamidNE <hamidne@mail.ru>",
+  "type": "module",
   "exports": {
     "types": "./dist/index.d.ts",
     "default": "./dist/index.js"
@@ -10,8 +12,11 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -b",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
