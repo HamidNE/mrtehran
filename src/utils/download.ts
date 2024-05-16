@@ -1,12 +1,10 @@
-import got from 'got'
 import {createWriteStream} from 'node:fs';
+import {Readable} from "node:stream";
+import {finished} from "node:stream/promises";
+import type {ReadableStream} from "node:stream/web";
 
 export async function downloadFile(url: string, path: string) {
-    return await new Promise((resolve, reject) => {
-        const writable = createWriteStream(path);
-        got.stream(url, { prefixUrl: '' }).pipe(writable);
-        writable
-            .on('error', err => { reject(err); })
-            .on('finish', resolve);
-    });
+    const {body} = await fetch(url);
+    const stream = createWriteStream(path);
+    return await finished(Readable.fromWeb(body as ReadableStream).pipe(stream));
 }
