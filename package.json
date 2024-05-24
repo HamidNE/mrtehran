@@ -1,7 +1,7 @@
 {
   "name": "mrtehran",
-  "version": "1.1.0",
-  "description": "Nodejs MrTehran downloader",
+  "version": "1.2.0",
+  "description": "Nodejs MrTehran SDK",
   "license": "MIT",
   "author": "HamidNE <hamidne@mail.ru>",
   "main": "dist/index.js",
@@ -13,12 +13,13 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "tsc -b",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rimraf dist && tsc -b",
+    "prepack": "pnpm build"
   },
   "devDependencies": {
     "@types/node": "^20.12.8",
     "eslint": "^9.2.0",
+    "rimraf": "^5.0.7",
     "typescript": "^5.4.5"
   }
 }
