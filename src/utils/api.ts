@@ -20,6 +20,15 @@ async function apiPolling(url: string) {
     return items;
 }
 
+//region Artist
+export async function fetchArtistInfo(id: string) {
+    return api(`artist_info?artist_id=${id}`);
+}
+
+export async function fetchArtistData(id: string) {
+    return api(`artist_data?artist_id=${id}`);
+}
+
 export async function fetchArtistLatestSongs(id: string) {
     return apiPolling(`artist_latest_songs?artist_id=${id}&page=1`);
 }
@@ -27,10 +36,17 @@ export async function fetchArtistLatestSongs(id: string) {
 export async function fetchArtistTopSongs(id: string) {
     return apiPolling(`artist_top_songs?artist_id=${id}&page=1`);
 }
+//endregion
+
+//region Album
+export async function fetchAlbumInfo(id: string) {
+    return api(`album_info?album_id=${id}`);
+}
 
 export async function fetchAlbumSongs(id: string) {
     return apiPolling(`album_data?album_id=${id}&page=1`);
 }
+//endregion
 
 export async function fetchPlaylistSongs(id: string) {
     return apiPolling(`playlist_data?playlist_id=${id}&sort_id=0&page=1`);
