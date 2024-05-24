@@ -1,4 +1,4 @@
-import {IAlbumInfo, IArtistInfo, Track} from "../types/api";
+import {IAlbumInfo, IArtistData, IArtistInfo, IPlaylistInfo, ITrack} from "../types/api";
 
 async function api<T>(url: string): Promise<T> {
     return fetch(new URL(url, 'https://api.mrtehran.app/web/v1/'), {
@@ -13,7 +13,7 @@ async function apiPolling(url: string) {
     const items = [];
     for (let i = 1;; i++) {
         const newUrl = url.replace(/page=\d/, `page=${i}`)
-        const res = await api<{ tracks: Track[], end: boolean }>(newUrl);
+        const res = await api<{ tracks: ITrack[], end: boolean }>(newUrl);
         items.push(...res.tracks);
         if (res.end) break;
     }
@@ -26,7 +26,7 @@ export async function fetchArtistInfo(id: string) {
 }
 
 export async function fetchArtistData(id: string) {
-    return api(`artist_data?artist_id=${id}`);
+    return api<IArtistData>(`artist_data?artist_id=${id}`);
 }
 
 export async function fetchArtistLatestSongs(id: string) {
@@ -48,6 +48,12 @@ export async function fetchAlbumSongs(id: string) {
 }
 //endregion
 
+//region Playlist
+export async function fetchPlaylistInfo(id: string) {
+    return api<IPlaylistInfo>(`playlist_info?playlist_id=${id}`);
+}
+
 export async function fetchPlaylistSongs(id: string) {
     return apiPolling(`playlist_data?playlist_id=${id}&sort_id=0&page=1`);
 }
+//endregion

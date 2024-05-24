@@ -1,10 +1,10 @@
-import {Track} from "../types/api";
+import {ITrack} from "../types/api";
 import {join} from "node:path";
 import {kebabCase} from "../utils/string";
 import {mkdir} from "node:fs/promises";
 import {downloadFile} from "../utils/download";
 
-export async function downloadSongs(res: Track[], destination: string) {
+export async function downloadSongs(res: ITrack[], destination: string) {
     const links: [string, string][] = res.map(item => [
         `https://cdnmrtehran.ir/media/${item.track_audio}`,
         join(destination, `${kebabCase(item.track_title)}.mp3`)
